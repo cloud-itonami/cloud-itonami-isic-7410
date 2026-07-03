@@ -1,0 +1,11 @@
+{:itonami.blueprint/id "cloud-itonami-7410"
+ :itonami.blueprint/name "Specialized design activities"
+ :itonami.blueprint/isic-rev5 "7410"
+ :itonami.blueprint/domain :professional/specialized-design
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:professional-standards :data-sovereignty :transparency]
+ :itonami.blueprint/governor :design-delivery-governor
+ :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger]
+ :itonami.blueprint/optional-technologies []
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/robotics true}
