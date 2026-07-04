@@ -2,7 +2,7 @@
 
 ## Classification
 
-- Repository: `cloud-itonami-7410`
+- Repository: `cloud-itonami-isic-7410`
 - ISIC Rev.5: `7410`
 - Activity: specialized design activities -- fashion, industrial, graphic and interior design services for clients
 - Social impact: professional standards, data sovereignty, transparent audit

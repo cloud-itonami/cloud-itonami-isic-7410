@@ -1,4 +1,4 @@
-{:itonami.blueprint/id "cloud-itonami-7410"
+{:itonami.blueprint/id "cloud-itonami-isic-7410"
  :itonami.blueprint/name "Specialized design activities"
  :itonami.blueprint/isic-rev5 "7410"
  :itonami.blueprint/domain :professional/specialized-design

@@ -1,6 +1,6 @@
 # Governance
 
-`cloud-itonami-7410` is an OSS open-business blueprint for specialized design activities -- fashion, industrial, graphic and interior design services for clients.
+`cloud-itonami-isic-7410` is an OSS open-business blueprint for specialized design activities -- fashion, industrial, graphic and interior design services for clients.
 Governance covers both the capability layer and the operator model.
 
 ## Maintainers

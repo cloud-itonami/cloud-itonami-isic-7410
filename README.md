@@ -1,4 +1,4 @@
-# cloud-itonami-7410
+# cloud-itonami-isic-7410
 
 Open Business Blueprint for **ISIC Rev.5 7410**: Specialized design activities.
 
