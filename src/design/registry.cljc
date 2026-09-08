@@ -34,7 +34,7 @@
   `:actuation/release-deliverable`, always human-gated -- see README
   `Actuation`)."
   (:require [clojure.set :as set]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is
@@ -77,7 +77,7 @@
     (throw (ex-info "deliverable-release: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "deliverable-release: sequence must be >= 0" {})))
-  (let [release-number (str (str/upper-case jurisdiction) "-REL-" (zero-pad sequence 6))
+  (let [release-number (str (str/upper jurisdiction) "-REL-" (zero-pad sequence 6))
         record {"record_id" release-number
                 "kind" "deliverable-release-draft"
                 "project_id" project-id
