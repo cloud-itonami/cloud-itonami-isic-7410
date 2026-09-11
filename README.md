@@ -108,7 +108,7 @@ at any phase, by construction.** Two independent layers enforce this
 (`design.governor`'s `:actuation/release-deliverable` high-stakes
 gate and `design.phase`'s phase table, which never puts `:actuation/
 release-deliverable` in any phase's `:auto` set) -- see `design.
-phase`'s docstring and `test/design/phase_test.clj`'s `release-
+phase`'s docstring and `test/design/phase_test.cljk`'s `release-
 deliverable-never-auto-at-any-phase`. The actor may draft, check and
 recommend; a human studio operator is always the one who actually
 releases a deliverable. Matching `leasing`'s/`underwriting`'s/
@@ -198,14 +198,14 @@ bespoke domain capability lib to reference at all.
 
 | File | Role |
 |---|---|
-| `src/design/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + deliverable-release history. No dynamically-filed sub-record -- the actuation op acts directly on a pre-seeded project, and the double-actuation guard checks a dedicated `:deliverable-released?` boolean rather than a `:status` value |
-| `src/design/registry.cljc` | Deliverable-release draft records, plus `deliverable-scope-exceeded?` -- the SIXTH instance of this fleet's set-containment/subset check family (`registrar`/`casework`/`secondary` established the first three, `consulting`/`congregation` the fourth and fifth in the 'permission/boundary' polarity) |
-| `src/design/facts.cljc` | Per-jurisdiction design-professional-standards/IP catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/design/designadvisor.cljc` | **Designer-LLM** -- `mock-advisor` ‖ `llm-advisor`; intake/brief-verification/IP-licensing-conflict-screening/deliverable-release proposals |
-| `src/design/governor.cljc` | **Design Delivery Governor** -- 3 HARD checks (spec-basis · evidence-incomplete · deliverable-scope-exceeded, pure ground-truth subset recompute · ip-licensing-conflict-unresolved, unconditional evaluation, the FORTY-FIRST grounding of this discipline, a genuinely new concept distinct from this fleet's existing 'conflict of interest' concept, grounded in this blueprint's own Trust Control text) + already-released guard + 1 soft (confidence/actuation gate) |
-| `src/design/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (deliverable release always human; project intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/design/operation.cljc` | **OperationActor** -- langgraph-clj StateGraph |
-| `src/design/sim.cljc` | demo driver |
+| `src/design/store.cljk` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + deliverable-release history. No dynamically-filed sub-record -- the actuation op acts directly on a pre-seeded project, and the double-actuation guard checks a dedicated `:deliverable-released?` boolean rather than a `:status` value |
+| `src/design/registry.cljk` | Deliverable-release draft records, plus `deliverable-scope-exceeded?` -- the SIXTH instance of this fleet's set-containment/subset check family (`registrar`/`casework`/`secondary` established the first three, `consulting`/`congregation` the fourth and fifth in the 'permission/boundary' polarity) |
+| `src/design/facts.cljk` | Per-jurisdiction design-professional-standards/IP catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/design/designadvisor.cljk` | **Designer-LLM** -- `mock-advisor` ‖ `llm-advisor`; intake/brief-verification/IP-licensing-conflict-screening/deliverable-release proposals |
+| `src/design/governor.cljk` | **Design Delivery Governor** -- 3 HARD checks (spec-basis · evidence-incomplete · deliverable-scope-exceeded, pure ground-truth subset recompute · ip-licensing-conflict-unresolved, unconditional evaluation, the FORTY-FIRST grounding of this discipline, a genuinely new concept distinct from this fleet's existing 'conflict of interest' concept, grounded in this blueprint's own Trust Control text) + already-released guard + 1 soft (confidence/actuation gate) |
+| `src/design/phase.cljk` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (deliverable release always human; project intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/design/operation.cljk` | **OperationActor** -- langgraph-clj StateGraph |
+| `src/design/sim.cljk` | demo driver |
 | `test/design/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)
