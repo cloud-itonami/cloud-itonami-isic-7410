@@ -1,5 +1,5 @@
 (ns design.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean project through
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean project through
   intake -> brief verification -> IP/licensing-conflict screening ->
   deliverable-release proposal (always escalates) -> human approval ->
   commit, then shows four HARD holds (a jurisdiction with no spec-
