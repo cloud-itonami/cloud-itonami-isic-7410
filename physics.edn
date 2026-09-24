@@ -1,0 +1,42 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:dev:physics` runs it.
+;;
+;; README "Robotics premise": a fabrication / prototyping robot produces
+;; physical design mockups / prototypes (ISIC 7410, specialized design
+;; activities). Its physical work: heating an ABS sheet for thermoforming a
+;; product mockup, testing a 3D-printed PLA coupon to see whether a printed
+;; hinge part will hold, and moving finished mockups to the review table.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-7410"
+ :cases
+ [{:id :abs-sheet-thermoform-heat
+   :kind :thermal
+   :procedure "ABS sheet heated from both sides by the thermoformer's heaters; half the sheet is modelled (mid-plane symmetry) until the mid-plane reaches forming temperature"
+   :params {:conductivity-w-mk 0.17 :density-kg-m3 1050.0 :specific-heat-j-kgk 1400.0
+            :t0-c 22.0 :t-hot-c 260.0 :h-front-w-m2k 30.0 :h-back-w-m2k 0.0
+            :threshold-c 150.0 :duration-s 1800.0 :nodes 11}
+   :sweep {:param :thickness-m :values [0.0005 0.001 0.002 0.003 0.004 0.005]}
+   :quantity :time-to-threshold-s
+   :limit {:max 180.0 :basis "estimate: heating dwell per mockup in the prototyping schedule; 150 C forming and the 260 C effective heater temperature are typical ABS values, not a cited datasheet"}
+   :boundary {:lo 0.0003 :hi 0.006}}
+  {:id :printed-pla-coupon
+   :kind :material
+   :procedure "tensile test of a 3D-printed PLA coupon (10 x 4 mm section) to decide whether the printed hinge part carries its snap-fit load"
+   :params {:length-m 0.05 :area-m2 4.0e-5 :youngs-modulus-pa 3.5e9 :hardening-pa 0.1e9
+            :density-kg-m3 1240.0 :max-force-n 3000.0}
+   :sweep {:param :yield-stress-pa :values [25.0e6 35.0e6 45.0e6 55.0e6 65.0e6]}
+   :quantity :yield-force-n
+   :limit {:min 1400.0 :basis "estimate: snap-fit hinge load with a factor for layer-direction weakness; PLA yield range across print settings is an estimate"}
+   :boundary {:lo 15.0e6 :hi 70.0e6}}
+  {:id :mockup-to-review-table
+   :kind :manipulator
+   :procedure "arm carries a finished mockup from the fabrication bench to the design-review table"
+   :params {:l1-m 0.45 :l2-m 0.40 :m1-kg 3.5 :m2-kg 2.5
+            :from [0.60 0.10] :to [0.10 0.60] :duration-s 2.0 :steps 500}
+   :sweep {:param :payload-kg :values [0.3 1.0 2.0 3.5 5.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 45.0 :basis "estimate: continuous shoulder torque of a 3-5 kg-class collaborative arm"}
+   :boundary {:lo 0.1 :hi 15.0}}]}
