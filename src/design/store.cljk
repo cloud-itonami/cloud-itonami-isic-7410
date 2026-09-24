@@ -33,7 +33,7 @@
   always a query over an immutable log -- the audit trail a client
   trusting a design studio needs, and the evidence a studio needs if a
   release decision is later disputed."
-  (:require #?(:clj  [clojure.edn :as edn]
+  (:require #?(:clj  [kotoba.lang.edn :as edn]
                :cljs [cljs.reader :as edn])
             [design.registry :as registry]
             [langchain.db :as d]))
